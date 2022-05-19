@@ -1,6 +1,6 @@
 // 3.	Same Numbers
 
-function sumNums(num){
+function sameNums(num){
     let numAsString = String(num);
     let isSameDig = false;
     
@@ -30,6 +30,6 @@ function sumNums(num){
     console.log(sum);
 }
 
-sumNums(222222);
-sumNums(1234);
+sameNums(222222);
+sameNums(1234);
 
