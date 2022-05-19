@@ -3,12 +3,15 @@
 function sameNums(num){
     let numAsString = String(num);
     let isSameDig = false;
+    let sum = 0;
     
     for(let i = 0; i < numAsString.length; i++){
+        sum += Number(numAsString[i]);
         let a = numAsString[0];
         let b = numAsString[i];
         // console.log(a);
         // console.log(b);
+        
         if (Number(a) == Number(b)) {
             isSameDig = true;
         } else {
@@ -23,10 +26,6 @@ function sameNums(num){
         console.log('false');
     }
 
-    let sum = 0;
-    for (let dig of numAsString) {
-        sum += Number(dig)
-    }
     console.log(sum);
 }
 
