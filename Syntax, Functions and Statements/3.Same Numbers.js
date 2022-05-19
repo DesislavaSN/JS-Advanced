@@ -16,7 +16,6 @@ function sameNums(num){
             isSameDig = true;
         } else {
             isSameDig = false;
-            break;
         }
     }
     
