@@ -1,62 +1,40 @@
 // 6.	Road Radar
 
-function roadRader(speed, area){
-    let difference = 0;
-    let status = "";
-    let residential = 20;
-    let city = 50;
-    let interstate = 90;
-    let motorway = 130;
+function roadRader(speed, area) {
+  let speedLimit = 0;
+  let status = "";
+  let difference = 0;
 
-    if (speed <= 20 && area == 'residential') {
-        console.log(`Driving ${speed} km/h in a ${residential} zone`);
-    } else if(speed > 20 && area == 'residential') {
-        difference = speed - 20;
-        if (difference <= 20) {
-            status = 'speeding';
-        } else if (difference > 20 && difference <= 40){
-            status = 'excessive speeding';
-        } else {
-            status = 'reckless driving';
-        }
-        console.log(`The speed is ${difference} km/h faster than the allowed speed of ${residential} - ${status}`);
-    } else if (speed <= 50 && area == 'city') {
-        console.log(`Driving ${speed} km/h in a ${city} zone`);
-    } else if (speed > 50 && area == 'city'){
-        difference = speed - 50;
-        if (difference <= 20) {
-            status = 'speeding';
-        } else if (difference > 20 && difference <= 40){
-            status = 'excessive speeding';
-        } else {
-            status = 'reckless driving';
-        }
-        console.log(`The speed is ${difference} km/h faster than the allowed speed of ${city} - ${status}`);
-    } else if (speed <= 90 && area == 'interstate'){
-        console.log(`Driving ${speed} km/h in a ${interstate} zone`);
-    } else if ( speed > 90 && area  == 'interstate'){
-        difference = speed - 90;
-        if (difference <= 20) {
-            status = 'speeding';
-        } else if (difference > 20 && difference <= 40){
-            status = 'excessive speeding';
-        } else {
-            status = 'reckless driving';
-        }
-        console.log(`The speed is ${difference} km/h faster than the allowed speed of ${interstate} - ${status}`);
-    } else if(speed <= 130 && area == 'motorway') {
-        console.log(`Driving ${speed} km/h in a ${motorway} zone`);
-    } else if(speed > 130 && area == 'motorway') {
-        difference =  speed - 130;
-        if (difference <= 20) {
-            status = 'speeding';
-        } else if (difference > 20 && difference <= 40){
-            status = 'excessive speeding';
-        } else {
-            status = 'reckless driving';
-        }
-        console.log(`The speed is ${difference} km/h faster than the allowed speed of ${motorway} - ${status}`);
+  switch (area) {
+    case 'residential':
+        speedLimit = 20;
+      break;
+    case 'city':
+        speedLimit = 50;
+      break;
+    case 'interstate':
+        speedLimit = 90;
+      break;
+    case 'motorway':
+        speedLimit = 130;
+      break;
+    default:
+      break;
+  }
+
+  if (speed <= speedLimit) {
+      console.log(`Driving ${speed} km/h in a ${speedLimit} zone`);
+  } else {
+    difference = speed - speedLimit;
+    if (difference <= 20) {
+        status = 'speeding';
+    } else if (difference > 20 && difference <= 40){
+        status = 'excessive speeding';
+    } else {
+        status = 'reckless driving';
     }
+    console.log(`The speed is ${difference} km/h faster than the allowed speed of ${speedLimit} - ${status}`);
+  }
 }
 
 roadRader(40, 'city');
