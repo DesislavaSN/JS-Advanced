@@ -6,11 +6,13 @@ function search() {
    for (const li of liItems) {
       let liText = li.textContent;
       if (liText.includes(search.value)) {
-         // console.log('true');
          counter++;
          li.style.fontWeight = "bold";
          li.style.textDecoration = "underline";
-      } 
+      } else {
+         li.style.fontWeight = "normal";
+         li.style.textDecoration = "";
+      }
    }
    const resultFound = document.getElementById('result').textContent = `${counter} matches found`;
    search.value = '';
