@@ -1,5 +1,5 @@
-// //4. Filter Employees
-// pomognah si s reshenieto na Zorniza sa filter() method:
+//4. Filter Employees
+
 function filterEmployees(input, criteria){
     const data = JSON.parse(input);
     const [key, value] = criteria.split('-');
@@ -9,27 +9,6 @@ function filterEmployees(input, criteria){
         console.log( `${i}. ${res[i].first_name} ${res[i].last_name} - ${res[i].email}` );
     }
 }
-
-// --- 
-// // moeto opisatelno reshenie - 75 points
-// function filterEmployees(input, criteria) {
-//   const data = JSON.parse(input);
-//   let [keyCriteria, valueCriteria] = criteria.split("-");
-//   // console.log(key,  'criteria');
-
-//     const res = [];
-//     for (const employee of data) {
-//       for (const [key, value] of Object.entries(employee)) {
-//           if (keyCriteria == key && valueCriteria == value) {
-//               res.push(employee);
-//           }
-//       }
-//     }
-//     for(let i = 0; i < res.length; i++){
-//         console.log( `${i}. ${res[i].first_name} ${res[i].last_name} - ${res[i].email}` );
-//       // console.log(res[i].first_name);
-//     }
-// }
 
 filterEmployees(
   `[{
@@ -54,7 +33,9 @@ filterEmployees(
   }]`,
   "gender-Female"
 );
+
 console.log("---");
+
 filterEmployees(
   `[{
     "id": "1",
