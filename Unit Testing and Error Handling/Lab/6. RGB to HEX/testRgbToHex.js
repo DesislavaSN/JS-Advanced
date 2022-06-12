@@ -1,3 +1,6 @@
+const { expect } = require("chai");
+const { rgbToHexColor } = require('./6.rgbToHex');
+
 // console.log(rgbToHexColor(15, 15, 15));
 
 describe('RGB to Hex Color Test', () => {
