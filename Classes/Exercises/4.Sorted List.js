@@ -18,11 +18,9 @@ class List {
         } 
         this.collection.splice(index,1);
         this.size = this.collection.length;
-        // this.collection.sort((a,b) => a-b);
     }
 
     get(index){
-        // this.collection.sort((a,b) => a-b);
         return this.collection[index];
     }
 }
