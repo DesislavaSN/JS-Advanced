@@ -1,5 +1,3 @@
-// 72 / 100
-
 window.addEventListener("load", solve);
 
 function solve() {
