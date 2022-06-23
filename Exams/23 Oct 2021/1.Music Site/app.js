@@ -1,4 +1,4 @@
-// 50/100 !??!?! 
+// 50/100 !??!?! - ne raboti!!!!  :(
 
 window.addEventListener('load', solve);
 
