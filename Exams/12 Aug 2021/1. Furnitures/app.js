@@ -26,30 +26,12 @@ function solve() {
             return;
         }
 
-        // първоначално създадох елементите без функция(която е най-долу на кода!)! и всичките съм ги маркирала зада се вийдат как съм ги създала!
         // 1st table row:
-        // let firstTrEl = document.createElement('tr');
-        // firstTrEl.classList.add('info');
         let firstTrEl = createElement('tr', null, 'info');
-
-        // let td1El = document.createElement('td');
-        // td1El.textContent = `${model}`;
         let td1El = createElement('td', model);
-
-        // let td2El = document.createElement('td');
-        // td2El.textContent = `${Number(price).toFixed(2)}`;
         let td2El = createElement('td', Number(price).toFixed(2));
-
-        // let td3El = document.createElement('td');
         let td3El = createElement('td');
-        // let moreInfoBtn = document.createElement('button');
-        // moreInfoBtn.classList.add('moreBtn');
-        // moreInfoBtn.textContent = 'More Info';
         let moreInfoBtn = createElement('button', 'More Info', 'moreBtn');
-
-        // let buyBtn = document.createElement('button');
-        // buyBtn.classList.add('buyBtn');
-        // buyBtn.textContent = 'Buy it';
         let buyBtn = createElement('button', 'Buy it', 'buyBtn');
         
         // -- append both buttons to td3El:
@@ -62,17 +44,8 @@ function solve() {
         firstTrEl.appendChild(td3El);
 
         //2nd table row:
-        // let secondTrEl = document.createElement('tr');
-        // secondTrEl.classList.add('hide');
         let secondTrEl = createElement('tr', null, 'hide');
-
-        // let td1SecondRowEl = document.createElement('td');
-        // td1SecondRowEl.textContent = `Year: ${year}`;
         let td1SecondRowEl = createElement('td', 'Year: ' + year);
-
-        // let td2SecondRowEl = document.createElement('td');
-        // td2SecondRowEl.setAttribute('colspan', '3');
-        // td2SecondRowEl.textContent = `Description: ${description}`;
         let td2SecondRowEl = createElement('td', 'Description: ' + description);
         td2SecondRowEl.setAttribute('colspan', '3');
 
@@ -89,6 +62,7 @@ function solve() {
         descriptionInput.value = '';
         priceInput.value = '';
 
+        // Event toggle button More / Less Info 
         moreInfoBtn.addEventListener('click', () => {
             if (moreInfoBtn.textContent == 'More Info') {
                 moreInfoBtn.textContent = 'Less Info';
@@ -97,10 +71,9 @@ function solve() {
                 moreInfoBtn.textContent = 'More Info';
                 secondTrEl.style.display = 'none';
             }
-            
-            // console.log('button is clicked'); 
         });
-
+    
+        // Event Buy button:
         buyBtn.addEventListener('click', (event) => {
             totalPrice += Number(price);
             totalPriceTableDate.textContent = totalPrice.toFixed(2);
