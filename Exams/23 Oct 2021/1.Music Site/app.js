@@ -1,5 +1,3 @@
-// 83/100
-
 window.addEventListener('load', solve);
 
 function solve(){
@@ -23,6 +21,10 @@ function solve(){
         const name = nameSongInput.value;
         const author = authorSongInput.value;
         const date = dateCreationInput.value;
+        
+        if (genre == '' || name == '' || author == '' || date == '') {
+            return;
+        }
 
         // Collection of Songs Container:
         const divHitsInfoEl = createElement('div', null, 'hits-info');
