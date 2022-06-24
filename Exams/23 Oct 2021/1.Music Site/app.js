@@ -1,78 +1,88 @@
-// 50/100 !??!?! - ne raboti!!!!  :(
+// 83/100
 
 window.addEventListener('load', solve);
 
-function solve() {
-    const genreInput = document.querySelector('#genre');
-    const nameOfSongInput = document.querySelector('#name');
-    const authorOfSongInput = document.querySelector('#author');
-    const creationDateInput = document.querySelector('#date');
-    const addSongButton = document.querySelector('#add-btn');
-    addSongButton.addEventListener('click', addSong);
+function solve(){
 
-    const collectionSongs = document.querySelector('section .all-hits-container');
-    const likesSection = document.querySelector('#total-likes .likes p');
+    const genreInput = document.querySelector('#genre');
+    const nameSongInput = document.querySelector('#name');
+    const authorSongInput = document.querySelector('#author');
+    const dateCreationInput = document.querySelector('#date');
+    const addBtn = document.querySelector('#add-btn');
+    addBtn.addEventListener('click', addSong);
+
+    const collectionSongsContainer = document.querySelector('#all-hits .all-hits-container');
+    const totalLikesParagraph = document.querySelector('#total-likes .likes p');
     let totalLikes = 0;
-    const savedSection = document.querySelector('#saved-hits .saved-container');
+    const savedSongsContainer = document.querySelector('#saved-hits .saved-container');
 
     function addSong(event){
         event.preventDefault();
-        // console.log('add song btn clicked!');
+
         const genre = genreInput.value;
-        const name = nameOfSongInput.value;
-        const author = authorOfSongInput.value;
-        const date = creationDateInput.value;
+        const name = nameSongInput.value;
+        const author = authorSongInput.value;
+        const date = dateCreationInput.value;
 
-        if (genre == '' || name == '' || author == '' || date == '') {
-            return;
-        }
+        // Collection of Songs Container:
+        const divHitsInfoEl = createElement('div', null, 'hits-info');
+        const imageEl = createElement('img');
+        imageEl.src = './static/img/img.png';
+        const h2ElGenre = createElement('h2', 'Genre: ' + genre);
+        const h2ElName = createElement('h2', 'Name: ' + name);
+        const h2ElAuthor = createElement('h2', 'Author: ' + author);
+        const h3ElDate = createElement('h3', 'Date: ' + date);
+        const saveBtn = createElement('button', 'Save song', 'save-btn');
+        const likeBtn = createElement('button', 'Like song', 'like-btn');
+        const deleteBtn = createElement('button', 'Delete', 'delete-btn');
 
-        collectionSongs.innerHTML += `<div class="hits-info">
-        <img src="./static/img/img.png">
-        <h2>Genre: ${genre}</h2>
-        <h2>Name: ${name}</h2>
-        <h2>Auhtor: ${author}</h2>
-        <h3>Date: ${date}</h3>
-        <button class="save-btn">Save song</button>
-        <button class="like-btn">Like song</button>
-        <button class="delete-btn">Delete</button>
-        </div>`.trim();
+        // -- append elements to Collection of songs
+        divHitsInfoEl.appendChild(imageEl);
+        divHitsInfoEl.appendChild(h2ElGenre);
+        divHitsInfoEl.appendChild(h2ElName);
+        divHitsInfoEl.appendChild(h2ElAuthor);
+        divHitsInfoEl.appendChild(h3ElDate);
+        divHitsInfoEl.appendChild(saveBtn);
+        divHitsInfoEl.appendChild(likeBtn);
+        divHitsInfoEl.appendChild(deleteBtn);
+        collectionSongsContainer.appendChild(divHitsInfoEl);
 
         genreInput.value = '';
-        nameOfSongInput.value = '';
-        authorOfSongInput.value = '';
-        creationDateInput.value = '';
+        nameSongInput.value = '';
+        authorSongInput.value = '';
+        dateCreationInput.value = '';
 
-        const likeBtn = collectionSongs.querySelector('.like-btn');
         likeBtn.addEventListener('click', () => {
             totalLikes++;
-            likesSection.textContent = `Total Likes: ${totalLikes}`;
+            totalLikesParagraph.textContent = 'Total Likes: ' + totalLikes;
             likeBtn.disabled = true;
         });
 
-        const savedBtn = collectionSongs.querySelector('.save-btn');
-        savedBtn.addEventListener('click', (event) => {
-            // console.log('saved Btn clicked');
-            savedSection.innerHTML += `<div class="hits-info">
-            <img src="./static/img/img.png">
-            <h2>Genre: ${genre}</h2>
-            <h2>Name: ${name}</h2>
-            <h2>Author: ${author}</h2>
-            <h3>Date: ${date}</h3>
-            <button class="delete-btn">Delete</button>
-            </div>`
-
-            event.target.parentNode.remove();
+        saveBtn.addEventListener('click', () => {
+            divHitsInfoEl.appendChild(imageEl);
+            divHitsInfoEl.appendChild(h2ElGenre);
+            divHitsInfoEl.appendChild(h2ElName);
+            divHitsInfoEl.appendChild(h2ElAuthor);
+            divHitsInfoEl.appendChild(h3ElDate);
+            divHitsInfoEl.querySelector('.save-btn').remove();
+            divHitsInfoEl.querySelector('.like-btn').remove()
+            divHitsInfoEl.appendChild(deleteBtn);
+            savedSongsContainer.appendChild(divHitsInfoEl);
         });
 
-        const deleteBtn = collectionSongs.querySelector('.delete-btn');
-        const delBtn = savedSection.querySelector('button');
-
-        deleteBtn.addEventListener('click', deleteElement);
-        delBtn.addEventListener('click', deleteElement);
-
-        function deleteElement(event){
+        deleteBtn.addEventListener('click', (event) => {
+            // console.log(event.target, 'clicked');
             event.target.parentNode.remove();
+        })
+    }
+
+    // Create HTML Elements function:
+    function createElement(type, content, className){
+        const element = document.createElement(type);
+        element.textContent = content;
+        if (className){
+            element.classList.add(className);
         }
+        return element;
     }
 }
